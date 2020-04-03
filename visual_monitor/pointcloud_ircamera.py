@@ -7,6 +7,7 @@
 
 import sys
 import getopt
+import serial.tools.list_ports
 import threading
 import math
 import struct
@@ -86,6 +87,7 @@ class SerialDataHandler(QThread):
         # print("SerialDataHandler:",self.port,115200)
         self.frameCount = 0
         self.failedCount = 0
+     
         #get evaluator mode
 
     def send_data(self,s): # send cmd to mcu with serial
@@ -115,6 +117,7 @@ class SerialDataHandler(QThread):
                 self.uiRequire.emit()
             break
         print(">>>>>mode:",evaluate_mode)
+        self.send_data('CMDC\1')
          # throw first frame
         #self.com.read_until(terminator=b'\r\n')
         while self.com.inWaiting() != 0:
@@ -300,7 +303,8 @@ class SerialDataHandler(QThread):
                         print(self.com.read(),end=' ')
                         tempLen += 1
 
-                    print(s,'\n len: ',tempLen,'\n')
+                    print(s,'\n ** len: ',tempLen,'\n')
+                    self.send_data('CMDC\1') # for auto retry for module replug in
 
                 # hetData = self.com.read_until(terminator=b'\r\n')
                 # if hetData[:3] != b'DAT':
@@ -587,6 +591,7 @@ class painter(QGraphicsView):
             print('obj: Human Body') 
             self.modeObjButton.setText("Body")
             self.dataThread.send_data('CMDO\1')
+            
     def ui_update(self):
         global evaluate_mode
         print("update UI ",evaluate_mode)
@@ -596,6 +601,7 @@ class painter(QGraphicsView):
             self.EvaluateButton.setText("Evaluate")
         else:
             self.EvaluateButton.setText("None")
+
     def common_offset(self):
         self.dataThread.send_data('CMDT\1')
         print("Get common_offset")
@@ -714,11 +720,26 @@ def run():
               \t -a,--maxhue= <maxhue>\n \
               \t -n,--narrowratio= <narrowratio>\n \
               \t d,--disableblur')
-        exit(0)
+        port_list = list(serial.tools.list_ports.comports())
+        com_size = len(port_list) 
+        print("com_size",com_size)
+
+        for port in port_list:
+            print("com",port)
+            print("port.vid",port.vid,"port.pid ",port.pid,"port.device",port.device)
+            if(port.pid == 29987):
+                serialPort = port.device
+                break
+        if serialPort == '':
+            print("No valid devie found !!!! ")
+            exit(0)
 
     print("...............pointcloud_ircamera..................")
     
     app = QApplication(sys.argv)
+
+    
+
     
     dataThread = SerialDataHandler(serialPort)
     window = painter(dataThread)
