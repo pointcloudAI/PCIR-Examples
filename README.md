@@ -6,7 +6,7 @@
  
  1. python on computer: [Python Example](https://gitee.com/pointcloudai/PCIR-Examples/tree/master/visual_monitor)  command line：python ir_demo.py serialPort [serial Baud rate]
  
-    example: `python3 ir_demo.py /dev/cu.usbserial-1410`(/dev/cu.usbserial-1410 should replaced by your serial port which named like COMx on windows or /dev/cu.xxxxx on OSX)
+    example: `python3 ir_demo.py 
  
  2. java on android: [Android Example](https://gitee.com/pointcloudai/PCIR-Examples/tree/master/android_visual_monitor)
  
@@ -29,16 +29,16 @@ This Development Kit help customer evaluate the performance on Window,Mac or Ubu
   **2. running Visual Monitor Demo** 
 
 this demo demonstrator how to send command to device and handle result from device, also illustrator how to process data frame on host.
- ## Python source code [visual monitor](https://gitee.com/pointcloudai/PCIR-Examples/tree/master/visual_monitor)
+ ## Python source code [visual monitor](https://github.com/pointcloudAI/PCIR-Examples/tree/master/visual_monitor)
 
  ![Visual Monitor for MLX90640](https://images.gitee.com/uploads/images/2020/0317/230625_d4215c52_5484807.png "visual_monitor.png")
 
 ## Document
 
-1.    [Serial command list](https://gitee.com/pointcloudai/PCIR-Examples/blob/master/Doc/200313PCIR-xxCx%20series%E6%8C%87%E4%BB%A4%E6%89%8B%E5%86%8C%20v1.4.pdf)
-2.    [PCIR series datasheet](https://gitee.com/pointcloudai/PCIR-Examples/blob/master/Doc/%E4%BA%A7%E5%93%81%E8%A7%84%E6%A0%BC%E4%B9%A6.pdf)
-3.    [Hardware design](https://gitee.com/pointcloudai/PCIR-Examples/blob/master/Doc/PCIR-40C%E7%A1%AC%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.pdf)
-4.    [Board size describe](https://gitee.com/pointcloudai/PCIR-Examples/tree/master/Doc)
+1.    [Serial command list](https://github.com/pointcloudAI/PCIR-Examples/blob/master/Doc/PCIR-xxCx%20series%20commands%20manual.pdf)
+2.    [PCIR series datasheet](https://github.com/pointcloudAI/PCIR-Examples/tree/master/Doc)
+3.    [Hardware design](https://github.com/pointcloudAI/PCIR-Examples/tree/master/Doc)
+4.    [Board size describe](https://github.com/pointcloudAI/PCIR-Examples/tree/master/Doc)
 
 ## Interface
  
