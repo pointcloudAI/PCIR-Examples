@@ -1,14 +1,18 @@
-** Python 工具使用方法
+** Python Demo tool usage
 
-1. 安装python3
-   参看 [Python3在各个系统平台的安装](https://www.runoob.com/python3/python3-install.html)
-2. 安装依赖库 串口和QT
+1. install python3 on your system
+   
+2. Installation of dependent library serial port and QT
 
 ```
 pip3 install pyserial
 pip3 install PyQt5
 ```
-3. 查看后得知串口对应端口，然后执行
+3. And than run it 
 ```
-python ./ir_demo.py -p 串口端口
+python ./ir_demo.py 
 ```
+
+### Python Demo installer for win10:
+
+http://pointcloud.ai/PCIR_setup.zip
