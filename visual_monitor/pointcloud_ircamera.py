@@ -158,7 +158,7 @@ class SerialDataHandler(QThread):
         try:
             print("try to init com")
             self.port = port
-            self.com = Serial(port, 230400, timeout=5)
+            self.com = Serial(port, 115200, timeout=5)
             return True
         except(OSError,serial.SerialException):
             print("init ",port,"fail")
